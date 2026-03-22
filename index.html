@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head> <!--CSS Design des Ideenformulars-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digitales Ideenformular</title>
+  <style>  
+    :root { 
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #dbe3ee;
+      --success: #16a34a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: -4px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .row {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .hint {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .primary:hover { background: var(--primary-dark); }
+
+    .secondary {
+      background: #e5e7eb;
+      color: var(--text);
+    }
+
+    .status-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .idea-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .idea-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fafcff;
+    }
+
+    .idea-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .idea-title {
+      font-weight: bold;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      background: #dcfce7;
+      color: var(--success);
+      white-space: nowrap;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .empty {
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body> <!--Grundgerüst des Ideenformular basierend auf die Anforderungen-->
+  <div class="container">
+    <header>
+      <h1>Digitales Ideenformular</h1>
+      <p class="subtitle">
+        Prototyp für Auftrag 1706: Mitarbeitende können Ideen erfassen, damit
+        Verbesserungsvorschläge nicht verloren gehen.
+      </p>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Idee erfassen</h2>
+        <p class="section-note">Dieser Prototyp zeigt, wie ein einfaches Ideenformular aufgebaut sein kann.</p>
+
+        <form id="ideaForm">
+          <div>
+            <label for="title">Titel der Idee</label>
+            <input id="title" name="title" type="text" placeholder="z.B. Automatische Eingangsbestätigung für Ideen" required />
+          </div>
+
+          <div>
+            <label for="description">Beschreibung der Idee</label>
+            <textarea id="description" name="description" placeholder="Beschreiben Sie Ihre Idee kurz und verständlich..." required></textarea>
+          </div>
+
+          <div>
+            <label for="benefit">Erwarteter Nutzen</label>
+            <textarea id="benefit" name="benefit" placeholder="Welchen Vorteil bringt die Idee für das Unternehmen oder die Mitarbeitenden?"></textarea>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="category">Kategorie</label>
+              <select id="category" name="category" required>
+                <option value="">Bitte auswählen</option>
+                <option>Prozessverbesserung</option>
+                <option>Produktidee</option>
+                <option>Kundenservice</option>
+                <option>Interne Zusammenarbeit</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="name">Name der Mitarbeiterin / des Mitarbeiters</label>
+              <input id="name" name="name" type="text" placeholder="Paul Berger" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="priority">Eingeschätzte Priorität</label>
+              <select id="priority" name="priority">
+                <option>Niedrig</option>
+                <option selected>Mittel</option>
+                <option>Hoch</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="date">Datum</label>
+              <input id="date" name="date" type="date" />
+              <span class="hint">Kann automatisch oder manuell erfasst werden.</span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary" type="submit">Idee einreichen</button>
+            <button class="secondary" type="reset">Formular leeren</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="card">
+        <h2>Vorschau / Resultat</h2>
+        <div class="status-box">
+          Nach dem Einreichen wird die Idee sichtbar gespeichert. So geht sie nicht verloren und kann später geprüft werden.
+        </div>
+
+        <h3>Erfasste Ideen</h3>
+        <div id="ideaList" class="idea-list">
+          <p class="empty">Noch keine Ideen erfasst.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('ideaForm');
+    const ideaList = document.getElementById('ideaList');
+    const dateInput = document.getElementById('date');
+
+    if (!dateInput.value) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const title = document.getElementById('title').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const benefit = document.getElementById('benefit').value.trim();
+      const category = document.getElementById('category').value;
+      const name = document.getElementById('name').value.trim();
+      const priority = document.getElementById('priority').value;
+      const date = document.getElementById('date').value;
+
+      if (ideaList.querySelector('.empty')) {
+        ideaList.innerHTML = '';
+      }
+
+      const item = document.createElement('div');
+      item.className = 'idea-item';
+      item.innerHTML = `
+        <div class="idea-top">
+          <div class="idea-title">${title}</div>
+          <span class="badge">Neu</span>
+        </div>
+        <div class="meta">${category} · Priorität: ${priority} · Eingereicht von ${name} am ${date}</div>
+        <div><strong>Beschreibung:</strong> ${description}</div>
+        <div style="margin-top:8px;"><strong>Nutzen:</strong> ${benefit || 'Kein Nutzen angegeben.'}</div>
+      `;
+
+      ideaList.prepend(item);
+      form.reset();
+      dateInput.value = new Date().toISOString().split('T')[0];
+      document.getElementById('priority').value = 'Mittel';
+    });
+  </script>
+</body>
+</html>
